@@ -1,0 +1,76 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Player{
+int playerId
+string playerName
+string playerImageUrl
+Coin gold
+Coin key
+List<item>
+LevelProgress levelProgress
+ZoneProgress zoneProgress
+}
+
+interface Item {
+}
+
+interface BoostItem extends Item{
+}
+
+class Bomb extends BoostItem{
+}
+class Potion extends BoostItem{
+}
+class Diamond extends BoostItem{
+}
+
+interface IngameItem extends Item{
+}
+
+class Hammer extends IngameItem{
+}
+class Arrow extends IngameItem{
+}
+class Rocket extends IngameItem{
+}
+class Dice extends IngameItem{
+}
+
+abstract class Level{
+    int LevelId
+    int TargetCount
+    int Moves
+    list<int> TargetScore
+}
+
+class Zone{
+    int ZoneId
+    list<Furniture> furniture
+}
+
+class Furniture{
+    string FurnitureName
+    int FurniturePrice
+}
+
+abstract class Progress{
+    currentLevelId
+}
+
+class ZoneProgress extends Progress{
+currentTaskCount
+taskMaxCount
+}
+class LevelProgress extends Progress{
+List<int> starCount
+}
+
+class GameResult{
+int targetCount
+int score
+int coinCount
+bool bWin
+}
+
+@enduml
